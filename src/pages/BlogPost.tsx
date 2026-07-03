@@ -43,7 +43,7 @@ export function BlogPost() {
     }
     descriptionMeta.setAttribute('content', description);
 
-    const ogUrl = `https://www.sivragp.com${pathname}`;
+    const ogUrl = `https://sivragp.com${pathname}`;
     setMetaProperty('og:title', `${titleForHead} — Blog SIVRA`);
     setMetaProperty('og:description', description);
     setMetaProperty('og:url', ogUrl);

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sivragp.com/sitemap.xml
+Sitemap: https://sivragp.com/sitemap.xml

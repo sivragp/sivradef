@@ -30,7 +30,7 @@ function CanonicalLinkManager() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const baseUrl = 'https://www.sivragp.com';
+    const baseUrl = 'https://sivragp.com';
     const normalizedPath = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
     const canonicalUrl = `${baseUrl}${normalizedPath}`;
 
