@@ -1,9 +1,22 @@
 import { motion } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
+import { Seo } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
 
 export function PrivacyPolicy() {
   return (
     <PageTransition>
+      <Seo
+        title="Privacy Policy — SIVRA"
+        description="Informativa sulla privacy di SIVRA: come raccogliamo, trattiamo e proteggiamo i dati personali degli utenti del sito sivragp.com."
+        path="/privacy"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Privacy Policy', path: '/privacy' },
+          ]),
+        ]}
+      />
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div

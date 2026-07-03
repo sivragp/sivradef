@@ -1,7 +1,9 @@
 import { PageTransition } from '../components/PageTransition';
 import { motion } from 'motion/react';
 import { ArrowRight, AlertCircle, CheckCircle2 } from 'lucide-react';
-import { useState, useEffect, ChangeEvent, FocusEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FocusEvent, FormEvent } from 'react';
+import { Seo } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
 
 interface FormData {
   name: string;
@@ -20,18 +22,6 @@ interface FormErrors {
 }
 
 export function Contact() {
-  useEffect(() => {
-    document.title = 'Contatta SIVRA: Chiamata Strategica Gratuita — Roma';
-    const description =
-      'Richiedi una chiamata strategica con SIVRA e scopri come costruire un sistema di acquisizione clienti più prevedibile per la tua azienda.';
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-  }, []);
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -160,6 +150,17 @@ export function Contact() {
 
   return (
     <PageTransition>
+      <Seo
+        title="Contatta SIVRA: Chiamata Strategica Gratuita — Roma"
+        description="Richiedi una chiamata strategica con SIVRA e scopri come costruire un sistema di acquisizione clienti più prevedibile per la tua azienda."
+        path="/contact"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Contatti', path: '/contact' },
+          ]),
+        ]}
+      />
       <section className="pt-40 pb-32">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">

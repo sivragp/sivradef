@@ -26,27 +26,6 @@ function ScrollToTop() {
   return null;
 }
 
-function CanonicalLinkManager() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    const baseUrl = 'https://www.sivragp.com';
-    const normalizedPath = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
-    const canonicalUrl = `${baseUrl}${normalizedPath}`;
-
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
-
-    canonicalLink.setAttribute('href', canonicalUrl);
-  }, [pathname]);
-
-  return null;
-}
-
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -78,7 +57,6 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <CanonicalLinkManager />
       <AnimatedRoutes />
     </Router>
   );

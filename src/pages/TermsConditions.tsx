@@ -1,9 +1,22 @@
 import { motion } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
+import { Seo } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
 
 export function TermsConditions() {
   return (
     <PageTransition>
+      <Seo
+        title="Termini e Condizioni — SIVRA"
+        description="Termini e condizioni d'uso del sito sivragp.com e dei servizi offerti da SIVRA - Growth Partner."
+        path="/terms"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Termini e Condizioni', path: '/terms' },
+          ]),
+        ]}
+      />
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div

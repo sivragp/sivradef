@@ -1,9 +1,51 @@
 import { PageTransition } from '../components/PageTransition';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Seo, SITE_URL, canonicalUrl } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, BarChart, Bar, CartesianGrid, PieChart, Pie, Cell } from 'recharts';
 import { CheckCircle2, ArrowRight, Zap, Target, BarChart3, Settings, Users, Cpu, Globe, Lightbulb, TrendingUp, ShieldCheck, HelpCircle, Workflow, Search, Mail, MousePointer2, Palette, Layout, Megaphone, Filter, Share2, MessageSquare, Code, BarChart as BarChartIcon } from 'lucide-react';
+
+const serviceItems = [
+  {
+    name: 'Strategia di Crescita',
+    description:
+      'Identifichiamo i colli di bottiglia che bloccano la crescita e costruiamo un piano chiaro per rimuoverli.',
+  },
+  {
+    name: 'Sistema di Acquisizione',
+    description:
+      'Progettiamo l\'intero funnel: posizionamento, landing page, sequenze email e campagne, costruiti per convertire.',
+  },
+  {
+    name: 'Consulenza Strategica',
+    description:
+      'Diventiamo il tuo team di crescita esterno: coinvolti nelle decisioni e responsabili dei risultati.',
+  },
+  {
+    name: 'Automazione con AI',
+    description:
+      'Integriamo AI e sistemi CRM per automatizzare i processi ripetitivi e ottimizzare le conversioni.',
+  },
+];
+
+const servicesItemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Servizi SIVRA',
+  itemListElement: serviceItems.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Service',
+      name: s.name,
+      description: s.description,
+      url: canonicalUrl('/services'),
+      provider: { '@id': `${SITE_URL}/#organization` },
+      areaServed: 'IT',
+    },
+  })),
+};
 
 const revenueData = [
   { month: 'Mese 1', attuale: 100, proiettato: 100 },
@@ -34,21 +76,20 @@ const funnelData = [
 ];
 
 export function Services() {
-  useEffect(() => {
-    document.title = 'Servizi Marketing Digitale e Automazione AI — SIVRA';
-    const description =
-      'Servizi di marketing digitale, automazione AI e consulenza strategica per scalare il fatturato. Soluzioni su misura per PMI e liberi professionisti.';
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-  }, []);
-
   return (
     <PageTransition>
+      <Seo
+        title="Servizi Marketing Digitale e Automazione AI — SIVRA"
+        description="Servizi di marketing digitale, automazione AI e consulenza strategica per scalare il fatturato. Soluzioni su misura per PMI e liberi professionisti."
+        path="/services"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Servizi', path: '/services' },
+          ]),
+          servicesItemList,
+        ]}
+      />
       {/* Hero Section */}
       <section className="pt-40 pb-20 border-b border-white/5 bg-gradient-to-b from-background to-card/20">
         <div className="container mx-auto px-6 max-w-7xl">

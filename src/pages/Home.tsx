@@ -1,25 +1,43 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Search, RefreshCw, LayoutDashboard } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
+import { Seo } from '../components/Seo';
+import { faqPage } from '../lib/jsonld';
+
+const homeFaqs = [
+  {
+    q: 'Quanto tempo ci vuole per vedere i primi risultati?',
+    a: 'Dipende dalla complessità del sistema e dal punto di partenza, ma solitamente iniziamo a vedere segnali misurabili e miglioramenti nelle metriche chiave entro i primi 90 giorni di collaborazione.',
+  },
+  {
+    q: 'Lavorate con qualsiasi tipo di azienda?',
+    a: 'No. Selezioniamo rigorosamente le aziende con cui collaboriamo. Cerchiamo business che hanno già un prodotto o servizio validato dal mercato e che sono pronti a scalare. Non lavoriamo con startup in fase pre-revenue.',
+  },
+  {
+    q: 'Qual è il vostro approccio alla collaborazione?',
+    a: 'Operiamo come una boutique strategica ad alta intensità. Non siamo una fabbrica di marketing; selezioniamo un numero limitato di partner ogni anno per garantire che ogni progetto riceva l\'attenzione diretta dei nostri esperti senior, assicurando una profondità di intervento che le agenzie tradizionali non possono offrire.',
+  },
+  {
+    q: 'Qual è il budget minimo richiesto per collaborare?',
+    a: 'I nostri interventi sono altamente personalizzati e basati sul valore generato. Durante la chiamata conoscitiva valuteremo la tua situazione attuale e il potenziale di crescita per capire se l\'investimento è giustificato dai risultati attesi.',
+  },
+  {
+    q: 'Offrite servizi di gestione social media?',
+    a: 'No. Ci concentriamo esclusivamente su sistemi che generano fatturato diretto: posizionamento strategico, architettura dei funnel e sistemi di acquisizione. Non offriamo \'social media management\' fine a se stesso.',
+  },
+];
 
 export function Home() {
-  useEffect(() => {
-    document.title = 'Agenzia di Marketing Digitale per PMI — SIVRA';
-    const description =
-      'SIVRA costruisce sistemi di acquisizione clienti per imprenditori e PMI italiane. Strategia, funnel, automazione CRM. Analisi gratuita in 30 minuti.';
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-  }, []);
-
   return (
     <PageTransition>
+      <Seo
+        title="Agenzia di Marketing Digitale per PMI — SIVRA"
+        description="SIVRA costruisce sistemi di acquisizione clienti per imprenditori e PMI italiane. Strategia, funnel, automazione CRM. Analisi gratuita in 30 minuti."
+        path="/"
+        jsonLd={[faqPage(homeFaqs)]}
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen lg:min-h-[82vh] flex items-center pt-32 pb-20 lg:pt-44 lg:pb-12 overflow-hidden">
         {/* Abstract Background */}
@@ -329,28 +347,7 @@ export function Home() {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-16 text-center">Domande Frequenti</h2>
           
           <div className="space-y-4">
-            {[
-              {
-                q: "Quanto tempo ci vuole per vedere i primi risultati?",
-                a: "Dipende dalla complessità del sistema e dal punto di partenza, ma solitamente iniziamo a vedere segnali misurabili e miglioramenti nelle metriche chiave entro i primi 90 giorni di collaborazione."
-              },
-              {
-                q: "Lavorate con qualsiasi tipo di azienda?",
-                a: "No. Selezioniamo rigorosamente le aziende con cui collaboriamo. Cerchiamo business che hanno già un prodotto o servizio validato dal mercato e che sono pronti a scalare. Non lavoriamo con startup in fase pre-revenue."
-              },
-              {
-                q: "Qual è il vostro approccio alla collaborazione?",
-                a: "Operiamo come una boutique strategica ad alta intensità. Non siamo una fabbrica di marketing; selezioniamo un numero limitato di partner ogni anno per garantire che ogni progetto riceva l'attenzione diretta dei nostri esperti senior, assicurando una profondità di intervento che le agenzie tradizionali non possono offrire."
-              },
-              {
-                q: "Qual è il budget minimo richiesto per collaborare?",
-                a: "I nostri interventi sono altamente personalizzati e basati sul valore generato. Durante la chiamata conoscitiva valuteremo la tua situazione attuale e il potenziale di crescita per capire se l'investimento è giustificato dai risultati attesi."
-              },
-              {
-                q: "Offrite servizi di gestione social media?",
-                a: "No. Ci concentriamo esclusivamente su sistemi che generano fatturato diretto: posizionamento strategico, architettura dei funnel e sistemi di acquisizione. Non offriamo 'social media management' fine a se stesso."
-              }
-            ].map((faq, i) => (
+            {homeFaqs.map((faq, i) => (
               <div key={i}>
                 <FAQItem question={faq.q} answer={faq.a} />
               </div>
