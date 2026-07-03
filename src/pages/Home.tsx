@@ -29,7 +29,7 @@ const homeFaqs = [
   },
   {
     q: 'Quanto costa lavorare con SIVRA?',
-    a: 'I nostri interventi sono altamente personalizzati e basati sul valore generato, quindi non esiste un listino fisso. Durante la chiamata conoscitiva gratuita di 30 minuti valutiamo la tua situazione attuale e il potenziale di crescita per capire se l\'investimento è giustificato dai risultati attesi e prepararti un preventivo su misura.',
+    a: 'Ogni progetto è su misura, quindi non esiste un listino fisso. La gamma è ampia: si va dalle landing page essenziali fino a piattaforme SaaS complesse, con un punto d\'ingresso accessibile per chi vuole partire. Durante la chiamata conoscitiva gratuita di 30 minuti valutiamo la tua situazione e il potenziale di crescita, poi prepariamo un preventivo su misura.',
   },
   {
     q: 'Qual è il budget minimo richiesto per collaborare?',
