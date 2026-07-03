@@ -127,9 +127,9 @@ export function Services() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-card border border-white/5 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
                     <CheckCircle2 size={16} /> Cosa include:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">•</span>
@@ -150,9 +150,9 @@ export function Services() {
                   </ul>
                 </div>
                 <div className="p-6 bg-accent/5 border border-accent/10 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
                     <HelpCircle size={16} /> Fa per te se:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
@@ -171,7 +171,7 @@ export function Services() {
               </div>
 
               <div className="p-6 border-l-2 border-accent bg-accent/5">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h4>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h3>
                 <p className="text-muted text-sm italic">
                   "Passare da un'azienda che rincorre i clienti a un brand che viene cercato. Risultato medio: +25% di margini grazie a un posizionamento premium."
                 </p>
@@ -328,9 +328,9 @@ export function Services() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-card border border-white/5 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
                     <CheckCircle2 size={16} /> Cosa include:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">•</span>
@@ -351,9 +351,9 @@ export function Services() {
                   </ul>
                 </div>
                 <div className="p-6 bg-accent/5 border border-accent/10 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
                     <HelpCircle size={16} /> Fa per te se:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
@@ -372,7 +372,7 @@ export function Services() {
               </div>
 
               <div className="p-6 border-l-2 border-accent bg-accent/5">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Esempio Pratico</h4>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Esempio Pratico</h3>
                 <p className="text-muted text-sm italic">
                   "Automatizzare la qualificazione dei lead: il tuo commerciale riceve solo appuntamenti con persone che hanno già il budget e il bisogno confermato. Risparmio: 15 ore/settimana per venditore."
                 </p>
@@ -397,9 +397,9 @@ export function Services() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-card border border-white/5 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
                     <CheckCircle2 size={16} /> Cosa include:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">•</span>
@@ -420,9 +420,9 @@ export function Services() {
                   </ul>
                 </div>
                 <div className="p-6 bg-accent/5 border border-accent/10 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
                     <HelpCircle size={16} /> Fa per te se:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
@@ -441,7 +441,7 @@ export function Services() {
               </div>
 
               <div className="p-6 border-l-2 border-accent bg-accent/5">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h4>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h3>
                 <p className="text-muted text-sm italic">
                   "Un flusso prevedibile di potenziali clienti. Non dipenderai più dalla fortuna. Ogni euro investito ha un ritorno chiaro e tracciabile (ROI medio 4x)."
                 </p>
