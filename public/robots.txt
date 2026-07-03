@@ -1,3 +1,70 @@
+# SIVRA — policy AI: permissiva (vogliamo essere citati dagli answer engine)
+
+# --- OpenAI ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-AdsBot
+Allow: /
+
+# --- Anthropic (Claude) ---
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# --- Perplexity ---
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# --- Google (AI Overviews / Gemini / Vertex) ---
+User-agent: Google-Extended
+Allow: /
+
+# --- Apple ---
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Amazon ---
+User-agent: Amazonbot
+Allow: /
+
+# --- Meta ---
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+# --- Common Crawl (dataset base di molti LLM) ---
+User-agent: CCBot
+Allow: /
+
+# --- DuckDuckGo ---
+User-agent: DuckAssistBot
+Allow: /
+
+# --- Mistral ---
+User-agent: MistralAI-User
+Allow: /
+
+# --- Default: tutti gli altri user-agent ---
 User-agent: *
 Allow: /
 
