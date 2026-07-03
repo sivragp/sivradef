@@ -1,25 +1,43 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Search, RefreshCw, LayoutDashboard } from 'lucide-react';
 import { PageTransition } from '../components/PageTransition';
+import { Seo } from '../components/Seo';
+import { faqPage } from '../lib/jsonld';
+
+const homeFaqs = [
+  {
+    q: 'Quanto tempo ci vuole per vedere i primi risultati?',
+    a: 'Dipende dalla complessità del sistema e dal punto di partenza, ma solitamente iniziamo a vedere segnali misurabili e miglioramenti nelle metriche chiave entro i primi 90 giorni di collaborazione.',
+  },
+  {
+    q: 'Lavorate con qualsiasi tipo di azienda?',
+    a: 'No. Selezioniamo rigorosamente le aziende con cui collaboriamo. Cerchiamo business che hanno già un prodotto o servizio validato dal mercato e che sono pronti a scalare. Non lavoriamo con startup in fase pre-revenue.',
+  },
+  {
+    q: 'Qual è il vostro approccio alla collaborazione?',
+    a: 'Operiamo come una boutique strategica ad alta intensità. Non siamo una fabbrica di marketing; selezioniamo un numero limitato di partner ogni anno per garantire che ogni progetto riceva l\'attenzione diretta dei nostri esperti senior, assicurando una profondità di intervento che le agenzie tradizionali non possono offrire.',
+  },
+  {
+    q: 'Qual è il budget minimo richiesto per collaborare?',
+    a: 'I nostri interventi sono altamente personalizzati e basati sul valore generato. Durante la chiamata conoscitiva valuteremo la tua situazione attuale e il potenziale di crescita per capire se l\'investimento è giustificato dai risultati attesi.',
+  },
+  {
+    q: 'Offrite servizi di gestione social media?',
+    a: 'No. Ci concentriamo esclusivamente su sistemi che generano fatturato diretto: posizionamento strategico, architettura dei funnel e sistemi di acquisizione. Non offriamo \'social media management\' fine a se stesso.',
+  },
+];
 
 export function Home() {
-  useEffect(() => {
-    document.title = 'Agenzia di Marketing Digitale per PMI — SIVRA';
-    const description =
-      'SIVRA costruisce sistemi di acquisizione clienti per imprenditori e PMI italiane. Strategia, funnel, automazione CRM. Analisi gratuita in 30 minuti.';
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-  }, []);
-
   return (
     <PageTransition>
+      <Seo
+        title="Agenzia di Marketing Digitale per PMI — SIVRA"
+        description="SIVRA costruisce sistemi di acquisizione clienti per imprenditori e PMI italiane. Strategia, funnel, automazione CRM. Analisi gratuita in 30 minuti."
+        path="/"
+        jsonLd={[faqPage(homeFaqs)]}
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen lg:min-h-[82vh] flex items-center pt-32 pb-20 lg:pt-44 lg:pb-12 overflow-hidden">
         {/* Abstract Background */}
@@ -31,15 +49,18 @@ export function Home() {
 
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="max-w-4xl">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-7xl lg:text-5xl xl:text-6xl font-display font-bold tracking-tighter leading-[1.05] mb-8 lg:mb-4"
             >
-              Smetti di comprare visibilità. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">
-                Inizia a costruire un sistema che vende da solo.
+              <span className="sr-only">Agenzia di Marketing Digitale e Acquisizione Clienti per PMI. </span>
+              <span aria-hidden="true">
+                Smetti di comprare visibilità. <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">
+                  Inizia a costruire un sistema che vende da solo.
+                </span>
               </span>
             </motion.h1>
             
@@ -174,7 +195,7 @@ export function Home() {
                       0{i + 1}
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                       <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
@@ -329,30 +350,9 @@ export function Home() {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-16 text-center">Domande Frequenti</h2>
           
           <div className="space-y-4">
-            {[
-              {
-                q: "Quanto tempo ci vuole per vedere i primi risultati?",
-                a: "Dipende dalla complessità del sistema e dal punto di partenza, ma solitamente iniziamo a vedere segnali misurabili e miglioramenti nelle metriche chiave entro i primi 90 giorni di collaborazione."
-              },
-              {
-                q: "Lavorate con qualsiasi tipo di azienda?",
-                a: "No. Selezioniamo rigorosamente le aziende con cui collaboriamo. Cerchiamo business che hanno già un prodotto o servizio validato dal mercato e che sono pronti a scalare. Non lavoriamo con startup in fase pre-revenue."
-              },
-              {
-                q: "Qual è il vostro approccio alla collaborazione?",
-                a: "Operiamo come una boutique strategica ad alta intensità. Non siamo una fabbrica di marketing; selezioniamo un numero limitato di partner ogni anno per garantire che ogni progetto riceva l'attenzione diretta dei nostri esperti senior, assicurando una profondità di intervento che le agenzie tradizionali non possono offrire."
-              },
-              {
-                q: "Qual è il budget minimo richiesto per collaborare?",
-                a: "I nostri interventi sono altamente personalizzati e basati sul valore generato. Durante la chiamata conoscitiva valuteremo la tua situazione attuale e il potenziale di crescita per capire se l'investimento è giustificato dai risultati attesi."
-              },
-              {
-                q: "Offrite servizi di gestione social media?",
-                a: "No. Ci concentriamo esclusivamente su sistemi che generano fatturato diretto: posizionamento strategico, architettura dei funnel e sistemi di acquisizione. Non offriamo 'social media management' fine a se stesso."
-              }
-            ].map((faq, i) => (
+            {homeFaqs.map((faq, i) => (
               <div key={i}>
-                <FAQItem question={faq.q} answer={faq.a} />
+                <FAQItem question={faq.q} answer={faq.a} index={i} />
               </div>
             ))}
           </div>
@@ -362,18 +362,24 @@ export function Home() {
   );
 }
 
-function FAQItem({ question, answer }: { question: string, answer: string }) {
+function FAQItem({ question, answer, index }: { question: string, answer: string, index: number }) {
   const [isOpen, setIsOpen] = useState(false);
+  const panelId = `faq-panel-${index}`;
+  const buttonId = `faq-trigger-${index}`;
 
   return (
     <div className="border border-white/10 rounded-sm overflow-hidden bg-card/30">
-      <button 
+      <button
+        id={buttonId}
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         className="w-full p-6 flex justify-between items-center text-left hover:bg-white/5 transition-colors"
       >
         <span className="text-lg font-display font-bold pr-8">{question}</span>
-        <motion.span 
+        <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
+          aria-hidden="true"
           className="text-accent text-2xl font-light leading-none"
         >
           +
@@ -382,6 +388,9 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

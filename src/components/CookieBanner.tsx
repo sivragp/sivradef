@@ -53,11 +53,12 @@ export function CookieBanner() {
                   </button>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => setIsVisible(false)}
+                aria-label="Chiudi"
                 className="text-muted hover:text-foreground transition-colors"
               >
-                <X size={16} />
+                <X size={16} aria-hidden="true" />
               </button>
             </div>
           </div>

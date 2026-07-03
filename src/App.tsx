@@ -26,27 +26,11 @@ function ScrollToTop() {
   return null;
 }
 
-function CanonicalLinkManager() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    const baseUrl = 'https://www.sivragp.com';
-    const normalizedPath = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
-    const canonicalUrl = `${baseUrl}${normalizedPath}`;
-
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
-
-    canonicalLink.setAttribute('href', canonicalUrl);
-  }, [pathname]);
-
-  return null;
-}
-
+/**
+ * Definizione delle route (Layout + pagine). Condivisa tra il rendering
+ * client (BrowserRouter) e il prerender a build-time (StaticRouter),
+ * così l'HTML statico coincide con quanto renderizzato dal browser.
+ */
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -74,12 +58,23 @@ function AnimatedRoutes() {
   );
 }
 
+/**
+ * Contenuto dell'app senza il router di trasporto: usato sia dal client
+ * (dentro <BrowserRouter>) sia dal prerender (dentro <StaticRouter>).
+ */
+export function AppRoutes() {
+  return (
+    <>
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </>
+  );
+}
+
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <CanonicalLinkManager />
-      <AnimatedRoutes />
+      <AppRoutes />
     </Router>
   );
 }

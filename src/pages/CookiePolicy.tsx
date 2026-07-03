@@ -1,9 +1,22 @@
 import { motion } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
+import { Seo } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
 
 export function CookiePolicy() {
   return (
     <PageTransition>
+      <Seo
+        title="Cookie Policy — SIVRA"
+        description="Cookie Policy di SIVRA: quali cookie utilizziamo sul sito sivragp.com, a cosa servono e come gestire le tue preferenze."
+        path="/cookies"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Cookie Policy', path: '/cookies' },
+          ]),
+        ]}
+      />
       <div className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div

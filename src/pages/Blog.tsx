@@ -3,22 +3,11 @@ import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { blogPosts } from '../data/blogPosts';
 import { ArrowRight, Calendar, Clock, User } from 'lucide-react';
-import { useEffect, useState, FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
+import { Seo } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
 
 export function Blog() {
-  useEffect(() => {
-    document.title = 'Blog Marketing Digitale e Strategie di Crescita — SIVRA';
-    const description =
-      'Blog di marketing digitale SIVRA: guide pratiche su acquisizione clienti, funnel e crescita per PMI. Scopri strategie operative da applicare subito.';
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-  }, []);
-
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -57,6 +46,17 @@ export function Blog() {
 
   return (
     <PageTransition>
+      <Seo
+        title="Blog Marketing Digitale e Strategie di Crescita — SIVRA"
+        description="Blog di marketing digitale SIVRA: guide pratiche su acquisizione clienti, funnel e crescita per PMI. Scopri strategie operative da applicare subito."
+        path="/blog"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: '/blog' },
+          ]),
+        ]}
+      />
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div
@@ -85,7 +85,10 @@ export function Blog() {
                 <Link to={`/blog/${post.slug}`} className="block aspect-[16/10] overflow-hidden">
                   <img
                     src={post.image}
-                    alt={post.title}
+                    alt={`Immagine di copertina dell'articolo "${post.title}" — categoria ${post.category}`}
+                    width={1024}
+                    height={576}
+                    loading="lazy"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

@@ -1,14 +1,17 @@
 import { PageTransition } from '../components/PageTransition';
 import { motion } from 'motion/react';
-import { useEffect } from 'react';
-import { 
-  ArrowUpRight, 
-  Users, 
-  LayoutDashboard, 
-  ShoppingBag, 
-  Search, 
-  Bell, 
-  TrendingUp, 
+import { Seo } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
+import { Link } from 'react-router-dom';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Users,
+  LayoutDashboard,
+  ShoppingBag,
+  Search,
+  Bell,
+  TrendingUp,
   CheckCircle2,
   Calendar,
   CreditCard,
@@ -17,21 +20,19 @@ import {
 } from 'lucide-react';
 
 export function CaseStudies() {
-  useEffect(() => {
-    document.title = 'Casi Studio: Risultati Reali per i Nostri Clienti — SIVRA';
-    const description =
-      'Scopri i casi studio SIVRA: risultati concreti su lead generation, posizionamento e crescita per PMI e liberi professionisti.';
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-  }, []);
-
   return (
     <PageTransition>
+      <Seo
+        title="Casi Studio: Risultati Reali per i Nostri Clienti — SIVRA"
+        description="Scopri i casi studio SIVRA: risultati concreti su lead generation, posizionamento e crescita per PMI e liberi professionisti."
+        path="/case-studies"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Casi Studio', path: '/case-studies' },
+          ]),
+        ]}
+      />
       <section className="pt-40 pb-20 border-b border-white/5">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.h1 
@@ -322,6 +323,21 @@ export function CaseStudies() {
               <div className="text-2xl font-display font-bold">+12%</div>
             </div>
           </div>
+        </section>
+
+        {/* CTA */}
+        <section className="text-center py-16 px-6 bg-card border border-white/5 rounded-sm">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Vuoi risultati come questi per la tua azienda?</h2>
+          <p className="text-muted text-lg mb-10 max-w-xl mx-auto">
+            Analizziamo insieme la tua situazione attuale e costruiamo un sistema di acquisizione su misura.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 bg-accent text-black px-10 py-4 rounded-sm font-bold hover:bg-accent-hover transition-all group"
+          >
+            Prenota una chiamata strategica
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </section>
 
       </div>

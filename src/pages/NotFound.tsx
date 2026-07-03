@@ -2,10 +2,17 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { PageTransition } from '../components/PageTransition';
 import { ArrowLeft, Home } from 'lucide-react';
+import { Seo } from '../components/Seo';
 
 export function NotFound() {
   return (
     <PageTransition>
+      <Seo
+        title="Pagina non trovata (404) — SIVRA"
+        description="La pagina che stai cercando non esiste o è stata spostata. Torna alla home di SIVRA."
+        path="/404"
+        noindex
+      />
       <section className="min-h-screen flex items-center justify-center pt-20">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.div

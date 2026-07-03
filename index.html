@@ -11,17 +11,80 @@
     />
     <title>Agenzia di Marketing Digitale per PMI — SIVRA</title>
     <meta name="description" content="SIVRA costruisce sistemi di acquisizione clienti per imprenditori e PMI italiane. Strategia, funnel, automazione CRM. Analisi gratuita in 30 minuti." />
-    <link rel="canonical" href="https://www.sivragp.com/" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJXK694K9Y"></script>
+    <link rel="canonical" href="https://sivragp.com/" />
+    <meta property="og:site_name" content="SIVRA" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sivragp.com/" />
+    <meta property="og:image" content="https://sivragp.com/media/og-default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- JSON-LD: Organization / ProfessionalService + WebSite (statico, valido anche senza JS) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://sivragp.com/#organization",
+          "name": "SIVRA",
+          "url": "https://sivragp.com",
+          "image": "https://sivragp.com/media/og-default.png",
+          "logo": "https://sivragp.com/sivra-logo.png",
+          "email": "info@sivragp.com",
+          "telephone": "+393209684720",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Roma",
+            "addressCountry": "IT"
+          },
+          "areaServed": "IT",
+          "sameAs": [
+            "https://www.instagram.com/sivragp/",
+            "https://www.facebook.com/profile.php?id=61575393580970",
+            "https://www.linkedin.com/company/sivra-growth-partner/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://sivragp.com/#website",
+          "url": "https://sivragp.com",
+          "name": "SIVRA",
+          "inLanguage": "it-IT",
+          "publisher": { "@id": "https://sivragp.com/#organization" }
+        }
+      ]
+    }
+    </script>
+    <!-- Google tag (gtag.js) — deferred off the critical path -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag('js', new Date());
-
-      gtag('config', 'G-ZJXK694K9Y');
+      (function () {
+        function loadGtag() {
+          if (window.__gtagLoaded) return;
+          window.__gtagLoaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZJXK694K9Y';
+          document.head.appendChild(s);
+          gtag('js', new Date());
+          gtag('config', 'G-ZJXK694K9Y');
+        }
+        function schedule() {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadGtag, { timeout: 3000 });
+          } else {
+            setTimeout(loadGtag, 1200);
+          }
+        }
+        if (document.readyState === 'complete') {
+          schedule();
+        } else {
+          window.addEventListener('load', schedule, { once: true });
+        }
+      })();
     </script>
   </head>
   <body>

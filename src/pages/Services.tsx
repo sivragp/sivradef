@@ -1,9 +1,51 @@
 import { PageTransition } from '../components/PageTransition';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Seo, SITE_URL, canonicalUrl } from '../components/Seo';
+import { breadcrumbList } from '../lib/jsonld';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, BarChart, Bar, CartesianGrid, PieChart, Pie, Cell } from 'recharts';
 import { CheckCircle2, ArrowRight, Zap, Target, BarChart3, Settings, Users, Cpu, Globe, Lightbulb, TrendingUp, ShieldCheck, HelpCircle, Workflow, Search, Mail, MousePointer2, Palette, Layout, Megaphone, Filter, Share2, MessageSquare, Code, BarChart as BarChartIcon } from 'lucide-react';
+
+const serviceItems = [
+  {
+    name: 'Strategia di Crescita',
+    description:
+      'Identifichiamo i colli di bottiglia che bloccano la crescita e costruiamo un piano chiaro per rimuoverli.',
+  },
+  {
+    name: 'Sistema di Acquisizione',
+    description:
+      'Progettiamo l\'intero funnel: posizionamento, landing page, sequenze email e campagne, costruiti per convertire.',
+  },
+  {
+    name: 'Consulenza Strategica',
+    description:
+      'Diventiamo il tuo team di crescita esterno: coinvolti nelle decisioni e responsabili dei risultati.',
+  },
+  {
+    name: 'Automazione con AI',
+    description:
+      'Integriamo AI e sistemi CRM per automatizzare i processi ripetitivi e ottimizzare le conversioni.',
+  },
+];
+
+const servicesItemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Servizi SIVRA',
+  itemListElement: serviceItems.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Service',
+      name: s.name,
+      description: s.description,
+      url: canonicalUrl('/services'),
+      provider: { '@id': `${SITE_URL}/#organization` },
+      areaServed: 'IT',
+    },
+  })),
+};
 
 const revenueData = [
   { month: 'Mese 1', attuale: 100, proiettato: 100 },
@@ -34,21 +76,20 @@ const funnelData = [
 ];
 
 export function Services() {
-  useEffect(() => {
-    document.title = 'Servizi Marketing Digitale e Automazione AI — SIVRA';
-    const description =
-      'Servizi di marketing digitale, automazione AI e consulenza strategica per scalare il fatturato. Soluzioni su misura per PMI e liberi professionisti.';
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-  }, []);
-
   return (
     <PageTransition>
+      <Seo
+        title="Servizi Marketing Digitale e Automazione AI — SIVRA"
+        description="Servizi di marketing digitale, automazione AI e consulenza strategica per scalare il fatturato. Soluzioni su misura per PMI e liberi professionisti."
+        path="/services"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Servizi', path: '/services' },
+          ]),
+          servicesItemList,
+        ]}
+      />
       {/* Hero Section */}
       <section className="pt-40 pb-20 border-b border-white/5 bg-gradient-to-b from-background to-card/20">
         <div className="container mx-auto px-6 max-w-7xl">
@@ -86,9 +127,9 @@ export function Services() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-card border border-white/5 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
                     <CheckCircle2 size={16} /> Cosa include:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">•</span>
@@ -109,9 +150,9 @@ export function Services() {
                   </ul>
                 </div>
                 <div className="p-6 bg-accent/5 border border-accent/10 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
                     <HelpCircle size={16} /> Fa per te se:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
@@ -130,7 +171,7 @@ export function Services() {
               </div>
 
               <div className="p-6 border-l-2 border-accent bg-accent/5">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h4>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h3>
                 <p className="text-muted text-sm italic">
                   "Passare da un'azienda che rincorre i clienti a un brand che viene cercato. Risultato medio: +25% di margini grazie a un posizionamento premium."
                 </p>
@@ -287,9 +328,9 @@ export function Services() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-card border border-white/5 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
                     <CheckCircle2 size={16} /> Cosa include:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">•</span>
@@ -310,9 +351,9 @@ export function Services() {
                   </ul>
                 </div>
                 <div className="p-6 bg-accent/5 border border-accent/10 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
                     <HelpCircle size={16} /> Fa per te se:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
@@ -331,7 +372,7 @@ export function Services() {
               </div>
 
               <div className="p-6 border-l-2 border-accent bg-accent/5">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Esempio Pratico</h4>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Esempio Pratico</h3>
                 <p className="text-muted text-sm italic">
                   "Automatizzare la qualificazione dei lead: il tuo commerciale riceve solo appuntamenti con persone che hanno già il budget e il bisogno confermato. Risparmio: 15 ore/settimana per venditore."
                 </p>
@@ -356,9 +397,9 @@ export function Services() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-card border border-white/5 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-accent mb-4 flex items-center gap-2">
                     <CheckCircle2 size={16} /> Cosa include:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">•</span>
@@ -379,9 +420,9 @@ export function Services() {
                   </ul>
                 </div>
                 <div className="p-6 bg-accent/5 border border-accent/10 rounded-sm">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4 flex items-center gap-2">
                     <HelpCircle size={16} /> Fa per te se:
-                  </h4>
+                  </h3>
                   <ul className="space-y-3 text-sm text-muted">
                     <li className="flex items-start gap-2">
                       <span className="text-accent mt-1">✓</span>
@@ -400,7 +441,7 @@ export function Services() {
               </div>
 
               <div className="p-6 border-l-2 border-accent bg-accent/5">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h4>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">Il Risultato</h3>
                 <p className="text-muted text-sm italic">
                   "Un flusso prevedibile di potenziali clienti. Non dipenderai più dalla fortuna. Ogni euro investito ha un ritorno chiaro e tracciabile (ROI medio 4x)."
                 </p>

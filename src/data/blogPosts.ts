@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
         <li>perché la tua proposta è diversa o più efficace</li>
       </ul>
 
-      <p>Se chi arriva sul sito deve interpretare, dedurre o cercare troppo a lungo le informazioni principali, nella maggior parte dei casi se ne andrà prima ancora di compiere un'azione.</p>
+      <p>Se chi arriva sul sito deve interpretare, dedurre o cercare troppo a lungo le informazioni principali, nella maggior parte dei casi se ne andrà prima ancora di compiere un'azione. Spesso, inoltre, il traffico atterra sulla pagina sbagliata: vale la pena capire quando conviene usare la <a href="/blog/homepage-o-landing-page">homepage o una landing page</a>.</p>
 
       <h2>2. Le call to action non guidano davvero l'utente</h2>
       <p>Un altro problema molto frequente riguarda le call to action, cioè gli inviti all'azione. Se il sito non dice in modo chiaro cosa fare dopo, l'utente difficilmente prenderà l'iniziativa da solo.</p>
@@ -145,7 +145,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Per fare un esempio semplice, un utente può arrivare sul sito, trovare un contenuto interessante e lasciare i suoi dati. Ma poi cosa succede? Riceve una risposta? Entra in un flusso email? Viene contattato? C'è un CRM che tiene traccia del lead? Oppure tutto si interrompe lì?</p>
 
-      <p>Quando il sito non è collegato a un processo più ampio, anche le visite più promettenti rischiano di non trasformarsi in opportunità reali.</p>
+      <p>Quando il sito non è collegato a un processo più ampio, anche le visite più promettenti rischiano di non trasformarsi in opportunità reali. Se vuoi approfondire questo aspetto, abbiamo dedicato una guida completa a <a href="/blog/funnel-acquisizione-clienti-sito-web">come creare un funnel di acquisizione clienti che parte dal sito web</a>.</p>
 
       <h2>Come capire dove si blocca la conversione del tuo sito</h2>
       <p>Se il tuo sito riceve traffico ma non genera contatti, la cosa migliore da fare non è cambiare tutto subito. Prima conviene osservare dove si crea il blocco.</p>
@@ -183,7 +183,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>La buona notizia è che questi aspetti si possono migliorare. E spesso i risultati arrivano non aumentando le visite, ma rendendo più efficace l'esperienza di chi è già interessato.</p>
 
-      <p>Un sito che converte non è quello che semplicemente attira attenzione. È quello che sa accompagnare la persona giusta verso il passo successivo.</p>
+      <p>Un sito che converte non è quello che semplicemente attira attenzione. È quello che sa accompagnare la persona giusta verso il passo successivo. Se vuoi trasformare il traffico in richieste concrete, scopri i nostri <a href="/services">servizi di marketing digitale e acquisizione clienti</a>.</p>
     `,
     date: '10 Marzo 2026',
     author: 'Elena Sivi',
@@ -247,7 +247,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Se l'obiettivo è acquisire un contatto su un servizio specifico, una landing page permette di controllare meglio il messaggio e il percorso dell'utente.</p>
 
-      <p>Questo non significa che ogni landing page converta automaticamente di più. Significa però che, quando è progettata bene e coerente con la fonte di traffico, spesso offre condizioni migliori rispetto a una homepage generica.</p>
+      <p>Questo non significa che ogni landing page converta automaticamente di più. Significa però che, quando è progettata bene e coerente con la fonte di traffico, spesso offre condizioni migliori rispetto a una homepage generica. Se noti che il tuo sito riceve visite ma poche richieste, può esserti utile capire perché <a href="/blog/sito-riceve-traffico-ma-non-genera-contatti">un sito riceve traffico ma non genera contatti</a>.</p>
 
       <h2>Homepage o landing page: quale converte di più?</h2>
       <p>Non esiste una risposta valida in assoluto. La pagina che converte di più dipende soprattutto da tre fattori:</p>
@@ -330,7 +330,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Questa combinazione è molto più efficace di una struttura in cui tutto viene delegato alla homepage o, al contrario, in cui si creano landing page senza una base strategica solida nel resto del sito.</p>
 
-      <p>Un sito orientato all'acquisizione contatti non punta tutto su una singola pagina. Costruisce un percorso coerente tra traffico, contenuti, pagina di destinazione e call to action.</p>
+      <p>Un sito orientato all'acquisizione contatti non punta tutto su una singola pagina. Costruisce un percorso coerente tra traffico, contenuti, pagina di destinazione e call to action. Questo percorso è esattamente ciò che definisce un <a href="/blog/funnel-acquisizione-clienti-sito-web">funnel di acquisizione clienti che parte dal sito web</a>.</p>
 
       <h2>Conclusione</h2>
       <p>Scegliere tra homepage e landing page non è una questione di gusto. È una scelta che incide sul modo in cui l'utente entra nel sito, legge la tua proposta e decide se contattarti oppure no.</p>
@@ -339,7 +339,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>In molti casi, il problema non è che il sito non abbia abbastanza traffico. È che quel traffico atterra sulla pagina sbagliata.</p>
 
-      <p>Hai bisogno di capire se ti serve una homepage più strategica o una landing page progettata per convertire? Individuare la pagina giusta è spesso il primo passo per aumentare i contatti.</p>
+      <p>Hai bisogno di capire se ti serve una homepage più strategica o una landing page progettata per convertire? Individuare la pagina giusta è spesso il primo passo per aumentare i contatti. Puoi vedere come lavoriamo su questo tema nei nostri <a href="/services">servizi di marketing digitale</a>.</p>
     `,
     date: '20 Marzo 2026',
     author: 'Marco Riva',
@@ -391,7 +391,7 @@ export const blogPosts: BlogPost[] = [
         <li>mancanza di misurazione dei passaggi chiave</li>
       </ul>
 
-      <p>Quando il sito non è inserito in una logica di funnel, anche un buon volume di visite può produrre risultati molto deboli.</p>
+      <p>Quando il sito non è inserito in una logica di funnel, anche un buon volume di visite può produrre risultati molto deboli. È il caso tipico in cui <a href="/blog/sito-riceve-traffico-ma-non-genera-contatti">un sito riceve traffico ma non genera contatti</a>.</p>
 
       <h2>I 5 elementi di un funnel che parte dal sito web</h2>
       <p>Un funnel di acquisizione clienti che funziona parte quasi sempre da cinque elementi fondamentali.</p>
@@ -424,7 +424,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Step 2. Crea una pagina pensata per convertire</h2>
       <p>Una volta che l'utente arriva sul sito, la pagina deve fare il suo lavoro. Non basta presentare informazioni: deve guidare.</p>
 
-      <p>La pagina può essere una homepage, una pagina servizio o una landing page, ma deve essere coerente con la promessa fatta prima del clic. Deve aiutare l'utente a capire subito:</p>
+      <p>La pagina può essere una homepage, una pagina servizio o una landing page, ma deve essere coerente con la promessa fatta prima del clic. Se hai dubbi su quale usare, leggi il nostro confronto tra <a href="/blog/homepage-o-landing-page">homepage o landing page</a>. Deve aiutare l'utente a capire subito:</p>
       <ul>
         <li>cosa offri</li>
         <li>quale problema risolvi</li>
@@ -526,7 +526,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Non servono per forza decine di strumenti o automazioni complesse. Spesso basta costruire bene i passaggi essenziali e renderli coerenti tra loro.</p>
 
-      <p>Se vuoi costruire un funnel che parta dal tuo sito e trasformi il traffico in richieste concrete, il primo passo è analizzare il percorso attuale e capire dove si interrompe la conversione.</p>
+      <p>Se vuoi costruire un funnel che parta dal tuo sito e trasformi il traffico in richieste concrete, il primo passo è analizzare il percorso attuale e capire dove si interrompe la conversione. Scopri come possiamo aiutarti nei nostri <a href="/services">servizi di acquisizione clienti</a>.</p>
     `,
     date: '28 Marzo 2026',
     author: 'Marco Riva',

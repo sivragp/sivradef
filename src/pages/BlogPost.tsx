@@ -1,56 +1,65 @@
-import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
 import { blogPosts } from '../data/blogPosts';
 import { ArrowLeft, Calendar } from 'lucide-react';
-import { useEffect } from 'react';
-
-function setMetaProperty(property: string, content: string) {
-  let el = document.querySelector(`meta[property="${property}"]`);
-  if (!el) {
-    el = document.createElement('meta');
-    el.setAttribute('property', property);
-    document.head.appendChild(el);
-  }
-  el.setAttribute('content', content);
-}
+import { Seo, canonicalUrl } from '../components/Seo';
+import { breadcrumbList, italianDateToISO, absoluteImage, orgRef } from '../lib/jsonld';
+import { NotFound } from './NotFound';
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const { pathname } = useLocation();
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    // Slug inesistente: renderizza la pagina NotFound (noindex) invece di
+    // reindirizzare, così l'utente e i crawler vedono un vero 404.
+    return <NotFound />;
   }
 
-  useEffect(() => {
-    const titleForHead = post.seoTitle ?? post.title;
-    document.title = `${titleForHead} — Blog SIVRA`;
+  const titleForHead = post.seoTitle ?? post.title;
+  const fullTitle = `${titleForHead} — Blog SIVRA`;
+  const description = post.metaDescription
+    ? post.metaDescription
+    : (() => {
+        const baseDescription = `${post.excerpt} Scopri la guida completa sul blog SIVRA.`;
+        return baseDescription.length > 160 ? `${baseDescription.slice(0, 157)}...` : baseDescription;
+      })();
 
-    const description = post.metaDescription
-      ? post.metaDescription
-      : (() => {
-          const baseDescription = `${post.excerpt} Scopri la guida completa sul blog SIVRA.`;
-          return baseDescription.length > 160 ? `${baseDescription.slice(0, 157)}...` : baseDescription;
-        })();
+  const path = `/blog/${post.slug}`;
+  const imageUrl = absoluteImage(post.image);
+  const datePublished = italianDateToISO(post.date);
 
-    let descriptionMeta = document.querySelector('meta[name="description"]');
-    if (!descriptionMeta) {
-      descriptionMeta = document.createElement('meta');
-      descriptionMeta.setAttribute('name', 'description');
-      document.head.appendChild(descriptionMeta);
-    }
-    descriptionMeta.setAttribute('content', description);
-
-    const ogUrl = `https://www.sivragp.com${pathname}`;
-    setMetaProperty('og:title', `${titleForHead} — Blog SIVRA`);
-    setMetaProperty('og:description', description);
-    setMetaProperty('og:url', ogUrl);
-  }, [pathname, post.excerpt, post.metaDescription, post.seoTitle, post.title]);
+  const blogPosting = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl(path) },
+    headline: post.title,
+    description,
+    image: imageUrl,
+    datePublished,
+    dateModified: datePublished,
+    author: { '@type': 'Person', name: post.author },
+    publisher: orgRef,
+  };
 
   return (
     <PageTransition>
+      <Seo
+        title={fullTitle}
+        description={description}
+        path={path}
+        ogImage={imageUrl}
+        type="article"
+        jsonLd={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: '/blog' },
+            { name: post.title, path },
+          ]),
+          blogPosting,
+        ]}
+      />
       <article className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-4xl">
           <motion.div
@@ -93,7 +102,9 @@ export function BlogPost() {
             <div className="aspect-video rounded-sm overflow-hidden mb-16">
               <img
                 src={post.image}
-                alt={post.title}
+                alt={`Immagine di copertina dell'articolo "${post.title}" sul blog di marketing digitale SIVRA`}
+                width={1024}
+                height={576}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
