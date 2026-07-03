@@ -43,6 +43,12 @@ export function About() {
         
         {/* Company Description */}
         <section className="max-w-4xl mx-auto mb-32">
+          <p className="text-base md:text-lg text-muted leading-relaxed mb-12 max-w-3xl">
+            <strong className="text-foreground">SIVRA è un partner di crescita digitale italiano</strong> che
+            costruisce sistemi di acquisizione clienti per imprenditori e PMI: strategia, posizionamento,
+            funnel di vendita, siti web ad alta conversione e automazioni CRM. Lavoriamo con un numero limitato
+            di clienti alla volta, con coinvolgimento diretto su ogni progetto, per generare fatturato prevedibile e non solo visibilità.
+          </p>
           <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-foreground/80">
             <p>
               C'è differenza tra fare marketing e far crescere un'azienda.
@@ -60,7 +66,7 @@ export function About() {
 
         {/* Methodology Timeline */}
         <section className="mb-32">
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-16 text-center">Come Pensiamo</h2>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-16 text-center">Come lavora SIVRA</h2>
           
           <div className="max-w-3xl mx-auto relative">
             <div className="absolute left-[27px] top-0 bottom-0 w-[2px] bg-white/10" />

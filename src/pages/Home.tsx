@@ -8,6 +8,14 @@ import { faqPage } from '../lib/jsonld';
 
 const homeFaqs = [
   {
+    q: 'Che cos\'è SIVRA e di cosa si occupa?',
+    a: 'SIVRA è un partner di crescita digitale italiano che costruisce sistemi di acquisizione clienti per imprenditori e PMI. Progettiamo strategia, posizionamento, funnel di vendita, siti web ad alta conversione e automazioni CRM, con l\'obiettivo di trasformare l\'attenzione in fatturato prevedibile invece di generare solo traffico.',
+  },
+  {
+    q: 'Per chi lavora SIVRA?',
+    a: 'Lavoriamo con imprenditori e PMI italiane che hanno già un prodotto o servizio validato dal mercato e sono pronti a scalare. Selezioniamo un numero limitato di clienti alla volta per garantire un coinvolgimento diretto su ogni progetto. Non lavoriamo con startup in fase pre-revenue.',
+  },
+  {
     q: 'Quanto tempo ci vuole per vedere i primi risultati?',
     a: 'Dipende dalla complessità del sistema e dal punto di partenza, ma solitamente iniziamo a vedere segnali misurabili e miglioramenti nelle metriche chiave entro i primi 90 giorni di collaborazione.',
   },
@@ -20,8 +28,16 @@ const homeFaqs = [
     a: 'Operiamo come una boutique strategica ad alta intensità. Non siamo una fabbrica di marketing; selezioniamo un numero limitato di partner ogni anno per garantire che ogni progetto riceva l\'attenzione diretta dei nostri esperti senior, assicurando una profondità di intervento che le agenzie tradizionali non possono offrire.',
   },
   {
+    q: 'Quanto costa lavorare con SIVRA?',
+    a: 'I nostri interventi sono altamente personalizzati e basati sul valore generato, quindi non esiste un listino fisso. Durante la chiamata conoscitiva gratuita di 30 minuti valutiamo la tua situazione attuale e il potenziale di crescita per capire se l\'investimento è giustificato dai risultati attesi e prepararti un preventivo su misura.',
+  },
+  {
     q: 'Qual è il budget minimo richiesto per collaborare?',
     a: 'I nostri interventi sono altamente personalizzati e basati sul valore generato. Durante la chiamata conoscitiva valuteremo la tua situazione attuale e il potenziale di crescita per capire se l\'investimento è giustificato dai risultati attesi.',
+  },
+  {
+    q: 'Come inizio a lavorare con SIVRA?',
+    a: 'Si parte da una chiamata strategica gratuita di 30 minuti. Non è una chiamata di vendita: è una conversazione per capire dove sei oggi, dove vuoi arrivare e se possiamo aiutarti. Puoi richiederla dalla pagina Contatti.',
   },
   {
     q: 'Offrite servizi di gestione social media?',
@@ -98,10 +114,15 @@ export function Home() {
         </div>
       </section>
 
-      {/* SEO Microcopy */}
+      {/* Answer Block — definizione estraibile dell'entità */}
       <section className="border-t border-white/5">
-        <div className="container mx-auto px-6 max-w-7xl py-6">
-          <p className="text-sm md:text-base text-muted leading-relaxed">
+        <div className="container mx-auto px-6 max-w-7xl py-8">
+          <p className="text-base md:text-lg text-foreground/80 leading-relaxed max-w-3xl">
+            <strong className="text-foreground">SIVRA è un partner di crescita digitale italiano</strong> che costruisce
+            sistemi di acquisizione clienti per imprenditori e PMI. Progettiamo strategia, funnel di vendita, siti
+            web ad alta conversione e automazioni CRM per trasformare l'attenzione in fatturato prevedibile — non solo traffico.
+          </p>
+          <p className="text-sm md:text-base text-muted leading-relaxed mt-4">
             Lead generation, funnel di vendita, automazione marketing, posizionamento Google e sistemi di acquisizione clienti.
           </p>
         </div>
