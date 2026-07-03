@@ -188,7 +188,7 @@ export const blogPosts: BlogPost[] = [
     date: '10 Marzo 2026',
     author: 'Elena Sivi',
     category: 'STRATEGIA',
-    image: '/blog/covers/copertina-conversioni-sito.png',
+    image: '/blog/covers/copertina-conversioni-sito.webp',
     readTime: '7 MIN DI LETTURA'
   },
   {
@@ -344,7 +344,7 @@ export const blogPosts: BlogPost[] = [
     date: '20 Marzo 2026',
     author: 'Marco Riva',
     category: 'STRATEGIA',
-    image: '/blog/covers/copertina-homepage-landing.png',
+    image: '/blog/covers/copertina-homepage-landing.webp',
     readTime: '9 MIN DI LETTURA'
   },
   {
@@ -531,7 +531,7 @@ export const blogPosts: BlogPost[] = [
     date: '28 Marzo 2026',
     author: 'Marco Riva',
     category: 'STRATEGIA',
-    image: '/blog/covers/copertina-funnel-sito-web.png',
+    image: '/blog/covers/copertina-funnel-sito-web.webp',
     readTime: '11 MIN DI LETTURA'
   }
 ];
