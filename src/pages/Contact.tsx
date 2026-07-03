@@ -223,39 +223,43 @@ export function Contact() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-foreground/80">Nome</label>
-                      <input 
-                        type="text" 
-                        id="name" 
+                      <input
+                        type="text"
+                        id="name"
                         value={formData.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground focus:outline-none transition-colors ${
+                        aria-invalid={touched.name && !!errors.name}
+                        aria-describedby={touched.name && errors.name ? 'name-error' : undefined}
+                        className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground placeholder:text-muted focus:outline-none transition-colors ${
                           touched.name && errors.name ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-accent'
                         }`}
                         placeholder="Mario Rossi"
                       />
                       {touched.name && errors.name && (
-                        <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
-                          <AlertCircle size={12} /> {errors.name}
+                        <p id="name-error" role="alert" className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} aria-hidden="true" /> {errors.name}
                         </p>
                       )}
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="company" className="text-sm font-medium text-foreground/80">Azienda</label>
-                      <input 
-                        type="text" 
-                        id="company" 
+                      <input
+                        type="text"
+                        id="company"
                         value={formData.company}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground focus:outline-none transition-colors ${
+                        aria-invalid={touched.company && !!errors.company}
+                        aria-describedby={touched.company && errors.company ? 'company-error' : undefined}
+                        className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground placeholder:text-muted focus:outline-none transition-colors ${
                           touched.company && errors.company ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-accent'
                         }`}
                         placeholder="Acme Corp"
                       />
                       {touched.company && errors.company && (
-                        <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
-                          <AlertCircle size={12} /> {errors.company}
+                        <p id="company-error" role="alert" className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} aria-hidden="true" /> {errors.company}
                         </p>
                       )}
                     </div>
@@ -264,11 +268,13 @@ export function Contact() {
                   <div className="space-y-2">
                     <label htmlFor="revenue" className="text-sm font-medium text-foreground/80">Fascia di fatturato mensile</label>
                     <div className="relative">
-                      <select 
-                        id="revenue" 
+                      <select
+                        id="revenue"
                         value={formData.revenue}
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        aria-invalid={touched.revenue && !!errors.revenue}
+                        aria-describedby={touched.revenue && errors.revenue ? 'revenue-error' : undefined}
                         className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground focus:outline-none transition-colors appearance-none ${
                           touched.revenue && errors.revenue ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-accent'
                         }`}
@@ -281,48 +287,52 @@ export function Contact() {
                       </select>
                     </div>
                     {touched.revenue && errors.revenue && (
-                      <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
-                        <AlertCircle size={12} /> {errors.revenue}
+                      <p id="revenue-error" role="alert" className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                        <AlertCircle size={12} aria-hidden="true" /> {errors.revenue}
                       </p>
                     )}
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="challenge" className="text-sm font-medium text-foreground/80">Sfida principale</label>
-                    <textarea 
-                      id="challenge" 
+                    <textarea
+                      id="challenge"
                       rows={4}
                       value={formData.challenge}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground focus:outline-none transition-colors resize-none ${
+                      aria-invalid={touched.challenge && !!errors.challenge}
+                      aria-describedby={touched.challenge && errors.challenge ? 'challenge-error' : undefined}
+                      className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground placeholder:text-muted focus:outline-none transition-colors resize-none ${
                         touched.challenge && errors.challenge ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-accent'
                       }`}
                       placeholder="Raccontaci cosa sta bloccando la tua crescita..."
                     />
                     {touched.challenge && errors.challenge && (
-                      <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
-                        <AlertCircle size={12} /> {errors.challenge}
+                      <p id="challenge-error" role="alert" className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                        <AlertCircle size={12} aria-hidden="true" /> {errors.challenge}
                       </p>
                     )}
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="contact" className="text-sm font-medium text-foreground/80">Metodo di contatto preferito</label>
-                    <input 
-                      type="text" 
-                      id="contact" 
+                    <input
+                      type="text"
+                      id="contact"
                       value={formData.contact}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground focus:outline-none transition-colors ${
+                      aria-invalid={touched.contact && !!errors.contact}
+                      aria-describedby={touched.contact && errors.contact ? 'contact-error' : undefined}
+                      className={`w-full bg-background border rounded-sm px-4 py-3 text-foreground placeholder:text-muted focus:outline-none transition-colors ${
                         touched.contact && errors.contact ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-accent'
                       }`}
                       placeholder="Email o Numero di telefono"
                     />
                     {touched.contact && errors.contact && (
-                      <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
-                        <AlertCircle size={12} /> {errors.contact}
+                      <p id="contact-error" role="alert" className="text-xs text-red-400 flex items-center gap-1 mt-1">
+                        <AlertCircle size={12} aria-hidden="true" /> {errors.contact}
                       </p>
                     )}
                   </div>

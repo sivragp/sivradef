@@ -66,6 +66,10 @@
   .blog-post-body strong {
     @apply text-foreground font-bold;
   }
+
+  .blog-post-body a {
+    @apply text-accent font-medium underline underline-offset-4 decoration-accent/40 hover:decoration-accent transition-colors;
+  }
 }
 
 /* Custom Scrollbar */
@@ -101,4 +105,16 @@
   width: 40px;
   height: 40px;
   background-color: rgba(0, 255, 148, 0.1);
+}
+
+/* Accessibilità: rispetta la preferenza di movimento ridotto */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

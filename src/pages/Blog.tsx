@@ -85,7 +85,7 @@ export function Blog() {
                 <Link to={`/blog/${post.slug}`} className="block aspect-[16/10] overflow-hidden">
                   <img
                     src={post.image}
-                    alt={post.title}
+                    alt={`Immagine di copertina dell'articolo "${post.title}" — categoria ${post.category}`}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

@@ -70,14 +70,18 @@ export function Navbar() {
         <button
           className="md:hidden text-foreground p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          {isMobileMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
         </button>
 
         {/* Mobile Nav */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
+              id="mobile-menu"
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}

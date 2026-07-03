@@ -93,7 +93,7 @@ export function BlogPost() {
             <div className="aspect-video rounded-sm overflow-hidden mb-16">
               <img
                 src={post.image}
-                alt={post.title}
+                alt={`Immagine di copertina dell'articolo "${post.title}" sul blog di marketing digitale SIVRA`}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />

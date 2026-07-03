@@ -1,5 +1,7 @@
 import { PageTransition } from '../components/PageTransition';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 export function About() {
@@ -98,6 +100,21 @@ export function About() {
               </motion.div>
             ))}
           </div>
+        </section>
+
+        {/* CTA */}
+        <section className="max-w-3xl mx-auto text-center py-16 px-6 bg-card border border-white/5 rounded-sm">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Costruiamo insieme la tua crescita</h2>
+          <p className="text-muted text-lg mb-10 max-w-xl mx-auto">
+            Raccontaci dove sei oggi e dove vuoi arrivare. In una chiamata di 30 minuti capiamo se possiamo aiutarti.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 bg-accent text-black px-10 py-4 rounded-sm font-bold hover:bg-accent-hover transition-all group"
+          >
+            Prenota una chiamata strategica
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </section>
 
       </div>
