@@ -94,6 +94,8 @@ export function BlogPost() {
               <img
                 src={post.image}
                 alt={post.title}
+                width={1024}
+                height={576}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />

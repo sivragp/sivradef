@@ -86,6 +86,9 @@ export function Blog() {
                   <img
                     src={post.image}
                     alt={post.title}
+                    width={1024}
+                    height={576}
+                    loading="lazy"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
