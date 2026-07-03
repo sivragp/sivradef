@@ -26,6 +26,11 @@ function ScrollToTop() {
   return null;
 }
 
+/**
+ * Definizione delle route (Layout + pagine). Condivisa tra il rendering
+ * client (BrowserRouter) e il prerender a build-time (StaticRouter),
+ * così l'HTML statico coincide con quanto renderizzato dal browser.
+ */
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -53,11 +58,23 @@ function AnimatedRoutes() {
   );
 }
 
+/**
+ * Contenuto dell'app senza il router di trasporto: usato sia dal client
+ * (dentro <BrowserRouter>) sia dal prerender (dentro <StaticRouter>).
+ */
+export function AppRoutes() {
+  return (
+    <>
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </>
+  );
+}
+
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <AnimatedRoutes />
+      <AppRoutes />
     </Router>
   );
 }

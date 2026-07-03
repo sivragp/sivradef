@@ -1,17 +1,20 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
 import { blogPosts } from '../data/blogPosts';
 import { ArrowLeft, Calendar } from 'lucide-react';
 import { Seo, canonicalUrl } from '../components/Seo';
 import { breadcrumbList, italianDateToISO, absoluteImage, orgRef } from '../lib/jsonld';
+import { NotFound } from './NotFound';
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    // Slug inesistente: renderizza la pagina NotFound (noindex) invece di
+    // reindirizzare, così l'utente e i crawler vedono un vero 404.
+    return <NotFound />;
   }
 
   const titleForHead = post.seoTitle ?? post.title;
