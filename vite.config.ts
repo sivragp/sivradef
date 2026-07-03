@@ -21,6 +21,14 @@ export default defineConfig(({mode}) => {
       hmr: process.env.DISABLE_HMR !== 'true',
     },
     build: {
+      // Keep the heavy recharts chunk (only used by the lazy-loaded Services
+      // page) out of the eager <link rel="modulepreload"> set. It stays lazy
+      // via React.lazy, so it only loads when Services is actually visited.
+      modulePreload: {
+        resolveDependencies(_filename, deps) {
+          return deps.filter((dep) => !dep.includes('recharts'));
+        },
+      },
       rollupOptions: {
         output: {
           manualChunks(id) {
