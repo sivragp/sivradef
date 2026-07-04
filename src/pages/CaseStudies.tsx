@@ -3,28 +3,157 @@ import { motion } from 'motion/react';
 import { Seo } from '../components/Seo';
 import { breadcrumbList } from '../lib/jsonld';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Users,
-  LayoutDashboard,
-  ShoppingBag,
-  Search,
-  Bell,
-  TrendingUp,
-  CheckCircle2,
-  Calendar,
-  CreditCard,
-  Target,
-  Plus
-} from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+
+type Project = {
+  key: string;
+  name: string;
+  url: string;
+  category: string;
+  description: string;
+  tags: string[];
+};
+
+const projects: Project[] = [
+  {
+    key: 'aimprenditori',
+    name: 'Associazione Imprenditori Italia',
+    url: 'https://aimprenditori.it/',
+    category: 'Istituzionale · Editoriale',
+    description:
+      "Sito istituzionale dell'Associazione Imprenditori Italia, realtà di rappresentanza che affianca le PMI italiane su bandi, finanziamenti, formazione ed eventi. Sviluppato su Shopify con tema custom in Liquid. SIVRA cura la manutenzione del tema e la gestione editoriale completa: pubblicazione della news settimanale e aggiornamento continuo di bandi e opportunità di finanziamento.",
+    tags: ['Shopify', 'Liquid', 'Gestione editoriale', 'Manutenzione tema', 'Content management'],
+  },
+  {
+    key: 'asteryslab',
+    name: 'Asterys Lab',
+    url: 'https://asterys-lab-scuola-di-coaching-icf-8eib-r758rs4il.vercel.app',
+    category: 'Formazione',
+    description:
+      "Sito di Asterys Lab, scuola di coaching accreditata ICF con sedi a Milano, Roma e online: percorsi di certificazione (Level 1 e 2, ACC/PCC/MCC), corsi brevi, team coaching sistemico, mentor coaching, supervisione e formazione per le aziende. SIVRA ha costruito il sito multi-pagina che presenta l'offerta formativa, gli accreditamenti ICF, gli eventi e il blog, con gestione SEO dedicata per ogni pagina.",
+    tags: ['UI/UX', 'React', 'SEO', 'Formazione', 'Istituzionale'],
+  },
+  {
+    key: 'diamanti',
+    name: 'Diamanti Automobili',
+    url: 'https://diamantiautomobili.com',
+    category: 'Automotive · Lead gen',
+    description:
+      'Sito di Diamanti Automobili, consulente indipendente per l\'acquisto auto (auto broker) con base a Roma e operatività in tutta Italia: ricerca su misura, perizia, permuta, finanziamento e consegna a domicilio. SIVRA ha costruito e cura il sito vetrina orientato alla generazione di contatti, con percorso a step del servizio, form di richiesta consulenza (tipo veicolo e budget) e sezioni di prova come casi di consegna e brand trattati.',
+    tags: ['UI/UX', 'Lead gen', 'Landing page', 'Form', 'SEO'],
+  },
+  {
+    key: 'miriale',
+    name: 'Miriale Holiday House',
+    url: 'https://miriale-house.com',
+    category: 'Hospitality',
+    description:
+      "Sito vetrina per una casa vacanze a Fiumicino, vicino Roma e all'aeroporto, con due appartamenti affittabili singolarmente o come struttura intera. SIVRA ha costruito e cura la presentazione della struttura: descrizione degli alloggi, gallery fotografica, sezione posizione e servizi, e contatto diretto per le richieste via WhatsApp, email e telefono, senza intermediari.",
+    tags: ['UI/UX', 'Sito vetrina', 'Hospitality', 'Gallery', 'Lead gen'],
+  },
+  {
+    key: 'easylocker',
+    name: 'Easy Locker',
+    url: 'https://easy-bagagli.vercel.app',
+    category: 'SaaS · Prodotto',
+    description:
+      "Piattaforma SaaS multi-tenant per il deposito bagagli automatizzato, costruita da SIVRA. Gestisce l'intero flusso self-service: prenotazione online, pagamento con carta, invio del codice di sblocco via email e accesso agli armadietti H24. L'architettura config-driven per-tenant permette di attivare nuovi punti deposito con branding e listino dedicati; primo deployment live per Easy Bagagli a Roma Termini.",
+    tags: ['SaaS', 'Multi-tenant', 'Booking', 'Payment', 'Next.js'],
+  },
+];
+
+function renderProjectCard(project: Project, index: number) {
+  const isEager = index === 0;
+  // Su desktop alterniamo il lato dell'immagine per dare ritmo alla pagina.
+  const imageOnLeft = index % 2 === 1;
+
+  return (
+    <motion.article
+      key={project.key}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6 }}
+      className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16"
+    >
+      {/* Hero image reale del sito */}
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noreferrer noopener"
+        className={`group relative block overflow-hidden rounded-sm border border-white/10 bg-card shadow-2xl transition-colors hover:border-accent/40 ${
+          imageOnLeft ? 'lg:order-1' : 'lg:order-2'
+        }`}
+        aria-label={`Apri il sito ${project.name} in una nuova scheda`}
+      >
+        <div className="aspect-[16/10] overflow-hidden">
+          <img
+            src={`/portfolio/${project.key}.webp`}
+            alt={`Anteprima del sito ${project.name} realizzato da SIVRA`}
+            width={1280}
+            height={800}
+            loading={isEager ? 'eager' : 'lazy'}
+            decoding={isEager ? 'auto' : 'async'}
+            className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+        <span className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-background/70 text-accent backdrop-blur-sm transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+          <ArrowUpRight className="h-4 w-4" />
+        </span>
+      </a>
+
+      {/* Contenuti */}
+      <div className={`space-y-5 ${imageOnLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+        <div className="font-mono text-xs uppercase tracking-widest text-accent sm:text-sm">
+          {project.category}
+        </div>
+
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="group inline-flex items-start gap-3 font-display text-3xl font-bold leading-tight transition-colors hover:text-accent sm:text-4xl"
+        >
+          <span>{project.name}</span>
+          <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-accent opacity-70 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 sm:h-7 sm:w-7" />
+        </a>
+
+        <p className="leading-relaxed text-muted">{project.description}</p>
+
+        <div className="flex flex-wrap gap-2 pt-1">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-widest text-muted"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="pt-2">
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="group inline-flex items-center gap-2 rounded-sm border border-accent/40 px-5 py-2.5 text-sm font-bold text-accent transition-colors hover:bg-accent hover:text-black"
+          >
+            Visita il sito
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
 export function CaseStudies() {
   return (
     <PageTransition>
       <Seo
-        title="Casi Studio: Risultati Reali per i Nostri Clienti — SIVRA"
-        description="Scopri i casi studio SIVRA: risultati concreti su lead generation, posizionamento e crescita per PMI e liberi professionisti."
+        title="Portfolio: i progetti web realizzati da SIVRA"
+        description="Il portfolio SIVRA: siti web, e-commerce e piattaforme SaaS costruiti su misura per PMI, associazioni e attività — hospitality, automotive, formazione e prodotti digitali."
         path="/case-studies"
         jsonLd={[
           breadcrumbList([
@@ -33,313 +162,51 @@ export function CaseStudies() {
           ]),
         ]}
       />
-      <section className="pt-40 pb-20 border-b border-white/5">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <motion.h1 
+
+      <section className="border-b border-white/5 pb-16 pt-32 sm:pb-20 sm:pt-40">
+        <div className="container mx-auto max-w-7xl px-6">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-display font-bold mb-8"
+            className="mb-6 font-display text-4xl font-bold sm:text-6xl md:text-7xl"
           >
             I Nostri <span className="text-accent">Progetti</span>.
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-muted max-w-2xl leading-relaxed"
+            className="max-w-2xl text-lg leading-relaxed text-muted sm:text-xl"
           >
-            Collaboriamo con aziende e associazioni per costruire ecosistemi digitali che comunicano autorità e generano valore nel tempo.
+            Costruiamo siti, e-commerce e piattaforme su misura per aziende,
+            associazioni e attività. Ogni progetto è un ecosistema digitale
+            pensato per comunicare valore e generare risultati concreti.
           </motion.p>
         </div>
       </section>
 
-      <div className="container mx-auto px-6 max-w-7xl py-24 space-y-32">
-        
-        {/* Case 1: Associazione Imprenditori Italia */}
-        <section className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
-            <div className="text-accent font-mono text-sm tracking-widest uppercase">Web Development & Institutional</div>
-            <a
-              href="https://aimprenditori.it/"
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-start gap-3 text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight transition-colors hover:text-accent"
-            >
-              <span>Associazione Imprenditori Italia</span>
-              <ArrowUpRight className="mt-1 h-6 w-6 shrink-0 text-accent opacity-70 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 sm:h-8 sm:w-8" />
-            </a>
-            
-            <div className="space-y-6 text-muted leading-relaxed">
-              <p>
-                <strong className="text-foreground block mb-2 text-lg">La Sfida:</strong>
-                L'Associazione necessitava di una presenza digitale che riflettesse l'autorevolezza e il prestigio del network, fornendo al contempo uno strumento funzionale per i propri associati.
-              </p>
-              <p>
-                <strong className="text-foreground block mb-2 text-lg">La Soluzione:</strong>
-                Abbiamo progettato e sviluppato un sito istituzionale moderno, focalizzato sulla User Experience e sulla facilità di reperimento delle informazioni. Il design pulito e professionale comunica istantaneamente i valori dell'Associazione.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-4">
-                {['UI/UX Design', 'Custom Development', 'Institutional Branding', 'Responsive Architecture'].map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-muted-foreground">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          {/* UI Mockup: Device Stack (Desktop + Mobile) */}
-          <div className="relative aspect-[4/3] sm:aspect-video flex items-center justify-center">
-            {/* Desktop Browser */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative w-full sm:w-[85%] aspect-video bg-[#0C0C0C] border border-white/10 rounded-sm overflow-hidden shadow-2xl z-0"
-            >
-              {/* Browser Header */}
-              <div className="h-6 bg-white/5 border-b border-white/5 flex items-center px-3 gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
-                <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
-                <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
-              </div>
-              
-              {/* Desktop Content */}
-              <div className="p-6 space-y-6">
-                <div className="flex justify-between items-center">
-                  <div className="w-20 h-2 bg-accent/30 rounded-full" />
-                  <div className="flex gap-3">
-                    {[1, 2, 3].map(i => <div key={i} className="w-8 h-1.5 bg-white/5 rounded-full" />)}
-                  </div>
-                </div>
-                <div className="space-y-3 pt-4">
-                  <div className="w-2/3 h-6 bg-white/10 rounded-sm" />
-                  <div className="w-1/2 h-6 bg-accent/20 rounded-sm" />
-                </div>
-                <div className="grid grid-cols-3 gap-3 pt-4">
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="aspect-video bg-white/[0.02] border border-white/5 rounded-sm" />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+      <div className="container mx-auto max-w-7xl px-6 py-16 sm:py-24">
+        <div className="space-y-20 sm:space-y-28 lg:space-y-32">
+          {projects.map((project, index) => renderProjectCard(project, index))}
+        </div>
 
-            {/* Mobile Device */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20, y: 40 }}
-              whileInView={{ opacity: 1, x: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute right-4 bottom-0 w-[22%] aspect-[9/19] bg-[#0C0C0C] border-[3px] border-white/10 rounded-[2rem] overflow-hidden shadow-2xl z-10 hidden sm:block"
-            >
-              {/* Mobile Screen Content */}
-              <div className="h-full flex flex-col">
-                <div className="h-6 bg-white/5 flex items-center justify-center">
-                  <div className="w-12 h-1 bg-white/10 rounded-full" />
-                </div>
-                <div className="p-4 space-y-4">
-                  <div className="w-8 h-8 bg-accent/20 rounded-full" />
-                  <div className="space-y-2">
-                    <div className="w-full h-3 bg-white/10 rounded-full" />
-                    <div className="w-full h-3 bg-white/10 rounded-full" />
-                    <div className="w-2/3 h-3 bg-white/10 rounded-full" />
-                  </div>
-                  <div className="aspect-square bg-white/[0.02] border border-white/5 rounded-sm" />
-                  <div className="w-full h-8 bg-accent rounded-sm" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Decorative Elements */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-accent/5 blur-3xl rounded-full" />
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-accent/10 blur-3xl rounded-full" />
-          </div>
-        </section>
-
-        {/* Case 2: Asterys Lab */}
-        <section className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* UI Mockup: Management Dashboard */}
-          <div className="order-2 lg:order-1 relative aspect-[4/3] sm:aspect-video bg-[#0C0C0C] border border-white/10 rounded-sm overflow-hidden group shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-transparent pointer-events-none" />
-            
-            <div className="p-8 h-full flex flex-col">
-              <div className="flex justify-between items-center mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-sm bg-accent/20 flex items-center justify-center">
-                    <Target size={18} className="text-accent" />
-                  </div>
-                  <div className="text-sm font-display font-bold uppercase tracking-widest">Digital Ecosystem</div>
-                </div>
-                <div className="flex gap-2">
-                  <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-bold">Live Data</div>
-                  <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center">
-                    <Search size={12} className="text-muted" />
-                  </div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                {[
-                  { label: 'Growth', val: '+32%', color: 'text-accent' },
-                  { label: 'ROAS', val: '3.2x', color: 'text-white' },
-                  { label: 'Efficiency', val: '94%', color: 'text-white' }
-                ].map((stat, i) => (
-                  <div key={i} className="p-4 bg-white/[0.03] border border-white/5 rounded-sm">
-                    <div className="text-[8px] text-muted uppercase tracking-widest mb-1">{stat.label}</div>
-                    <div className={`text-xl font-display font-bold ${stat.color}`}>{stat.val}</div>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="flex-grow bg-white/[0.02] border border-white/5 rounded-sm p-6 relative overflow-hidden flex flex-col">
-                <div className="flex justify-between items-center mb-6">
-                  <div className="text-[10px] font-mono text-muted uppercase">Recent Conversions</div>
-                  <div className="flex gap-1">
-                    <div className="w-1 h-1 rounded-full bg-accent" />
-                    <div className="w-1 h-1 rounded-full bg-accent/40" />
-                    <div className="w-1 h-1 rounded-full bg-accent/20" />
-                  </div>
-                </div>
-                
-                <div className="space-y-3 flex-grow">
-                  {[
-                    { id: '#8922', time: '2m ago', val: '€45.00' },
-                    { id: '#8921', time: '14m ago', val: '€120.00' },
-                    { id: '#8920', time: '22m ago', val: '€75.00' }
-                  ].map((conv, i) => (
-                    <div key={i} className="flex justify-between items-center text-[10px] border-b border-white/5 pb-2">
-                      <div className="flex gap-3">
-                        <span className="text-muted">{conv.id}</span>
-                        <span className="font-bold">{conv.val}</span>
-                      </div>
-                      <span className="text-accent/60">{conv.time}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Abstract Graph Overlay */}
-                <div className="absolute inset-x-0 bottom-0 h-16 flex items-end px-6 gap-1 opacity-20 pointer-events-none">
-                  {[20, 35, 25, 50, 45, 70, 60, 90].map((h, i) => (
-                    <div key={i} className="flex-grow bg-accent" style={{ height: `${h}%` }} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2 space-y-6">
-            <div className="text-accent font-mono text-sm tracking-widest uppercase">Web Management & Digital Marketing</div>
-            <a
-              href="https://asteryslab.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-start gap-3 text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight transition-colors hover:text-accent"
-            >
-              <span>Asterys Lab</span>
-              <ArrowUpRight className="mt-1 h-6 w-6 shrink-0 text-accent opacity-70 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 sm:h-8 sm:w-8" />
-            </a>
-            
-            <div className="space-y-6 text-muted leading-relaxed">
-              <p>
-                <strong className="text-foreground block mb-2 text-lg">La Sfida:</strong>
-                Gestire un ecosistema digitale complesso garantendo coerenza di brand, performance tecniche elevate e una strategia di acquisizione costante in un settore altamente competitivo.
-              </p>
-              <p>
-                <strong className="text-foreground block mb-2 text-lg">La Soluzione:</strong>
-                SIVRA opera come partner strategico per il management web e il marketing digitale. Abbiamo implementato processi di ottimizzazione continua e campagne mirate che hanno consolidato la presenza online del brand.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-4">
-                {['Web Management', 'Performance Marketing', 'Content Strategy', 'Data Analysis'].map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-muted-foreground">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Case 3: Sivra Denim */}
-        <section className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
-            <div className="text-accent font-mono text-sm tracking-widest uppercase">E-commerce & Fashion</div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold leading-tight">Sivra Denim</h2>
-            
-            <div className="space-y-6 text-muted leading-relaxed">
-              <p>
-                <strong className="text-foreground block mb-2 text-lg">La Sfida:</strong>
-                Lanciare un brand di streetwear con un'identità forte e un'esperienza di acquisto fluida, capace di competere nel mercato fashion digitale contemporaneo.
-              </p>
-              <p>
-                <strong className="text-foreground block mb-2 text-lg">La Soluzione:</strong>
-                Sviluppo di una piattaforma e-commerce custom focalizzata sul mobile-first e sulla narrazione del brand. Abbiamo inoltre gestito campagne social strategiche con collaborazioni con influencer a livello internazionale, aumentando significativamente l'autorevolezza e la risonanza globale del brand.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-4">
-                {['E-commerce Development', 'Streetwear Branding', 'Influencer Marketing', 'Social Strategy'].map(tag => (
-                  <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-muted-foreground">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          {/* UI Mockup: E-commerce Experience */}
-          <div className="relative aspect-[4/3] sm:aspect-video bg-[#0C0C0C] border border-white/10 rounded-sm overflow-hidden group shadow-2xl flex items-center justify-center">
-            {/* Desktop Admin Preview (Background) */}
-            <div className="absolute top-8 left-8 right-8 bottom-8 bg-white/[0.02] border border-white/5 rounded-sm opacity-40 scale-110 blur-[1px]">
-              <div className="h-6 border-b border-white/5 px-4 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-white/10" />
-                <div className="w-12 h-2 bg-white/5 rounded-full" />
-              </div>
-              <div className="p-4 grid grid-cols-4 gap-4">
-                {[1, 2, 3, 4].map(i => <div key={i} className="h-12 bg-white/5 rounded-sm" />)}
-              </div>
-            </div>
-
-            {/* Mobile Mockup (Foreground) */}
-            <div className="w-48 h-80 bg-background border border-white/10 rounded-2xl overflow-hidden relative shadow-2xl z-10">
-              <div className="h-6 bg-white/5 flex items-center justify-center">
-                <div className="w-12 h-1 bg-white/10 rounded-full" />
-              </div>
-              
-              <div className="p-4 space-y-4">
-                <div className="flex justify-between items-center">
-                  <div className="text-[10px] font-display font-bold uppercase italic">Sivra Denim</div>
-                  <ShoppingBag size={14} className="text-accent" />
-                </div>
-                
-                <div className="aspect-[3/4] bg-white/5 rounded-sm relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-3 left-3">
-                    <div className="text-[8px] text-accent uppercase font-bold">New Drop</div>
-                    <div className="text-xs font-bold uppercase">Essential Hoodie</div>
-                  </div>
-                </div>
-                
-                <div className="flex justify-between items-center">
-                  <div className="text-sm font-bold">€89.00</div>
-                  <div className="px-4 py-2 bg-accent text-black text-[10px] font-bold uppercase rounded-sm">Add to Cart</div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Sales Badge */}
-            <div className="absolute top-12 right-12 p-4 bg-accent text-black rounded-sm rotate-6 shadow-xl z-20">
-              <div className="text-[10px] font-bold uppercase">Conversion Rate</div>
-              <div className="text-2xl font-display font-bold">+12%</div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="text-center py-16 px-6 bg-card border border-white/5 rounded-sm">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Vuoi risultati come questi per la tua azienda?</h2>
-          <p className="text-muted text-lg mb-10 max-w-xl mx-auto">
-            Analizziamo insieme la tua situazione attuale e costruiamo un sistema di acquisizione su misura.
+        {/* CTA finale */}
+        <section className="mt-20 rounded-sm border border-white/5 bg-card px-6 py-16 text-center sm:mt-28">
+          <h2 className="mb-6 font-display text-3xl font-bold md:text-4xl">
+            Vuoi un progetto come questi per la tua attività?
+          </h2>
+          <p className="mx-auto mb-10 max-w-xl text-lg text-muted">
+            Analizziamo insieme i tuoi obiettivi e costruiamo la presenza
+            digitale su misura per la tua realtà.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-accent text-black px-10 py-4 rounded-sm font-bold hover:bg-accent-hover transition-all group"
+            className="group inline-flex items-center gap-2 rounded-sm bg-accent px-10 py-4 font-bold text-black transition-all hover:bg-accent-hover"
           >
             Prenota una chiamata strategica
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </section>
-
       </div>
     </PageTransition>
   );
