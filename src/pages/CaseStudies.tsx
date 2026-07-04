@@ -60,24 +60,6 @@ const projects: Project[] = [
       "Piattaforma SaaS multi-tenant per il deposito bagagli automatizzato, costruita da SIVRA. Gestisce l'intero flusso self-service: prenotazione online, pagamento con carta, invio del codice di sblocco via email e accesso agli armadietti H24. L'architettura config-driven per-tenant permette di attivare nuovi punti deposito con branding e listino dedicati; primo deployment live per Easy Bagagli a Roma Termini.",
     tags: ['SaaS', 'Multi-tenant', 'Booking', 'Payment', 'Next.js'],
   },
-  {
-    key: 'laterrazza',
-    name: 'La Terrazza del Marchese',
-    url: 'https://la-terrazza-del-marchese.vercel.app',
-    category: 'Ristorazione · Hospitality',
-    description:
-      "Sito vetrina per un ristorante di cucina romana a Ostia Lido, con sala interna e terrazza per eventi privati. SIVRA ha costruito il sito su Next.js: racconto del locale (storia, cucina, terrazza), showcase dei piatti e gallery, con contatto diretto via telefono, WhatsApp ed email. Un'unica presenza online curata per comunicare l'identità del locale e canalizzare le prenotazioni.",
-    tags: ['Next.js', 'UI/UX', 'Hospitality', 'Vercel', 'Landing page'],
-  },
-  {
-    key: 'anticaloggia',
-    name: 'Antica Loggia',
-    url: 'https://antica-loggia.vercel.app',
-    category: 'Hospitality · Casa vacanze',
-    description:
-      'Sito vetrina per Antica Loggia, casa vacanze in un appartamento storico del XVII secolo a Trevi, nel cuore dell\'Umbria. SIVRA ha costruito il sito che presenta la struttura, i servizi e la galleria fotografica, con navigazione tra ambienti, localizzazione e attrazioni del territorio. La richiesta di prenotazione è gestita via contatto diretto WhatsApp e form.',
-    tags: ['UI/UX', 'Next.js', 'Hospitality', 'WhatsApp booking', 'Gallery'],
-  },
 ];
 
 function renderProjectCard(project: Project, index: number) {
