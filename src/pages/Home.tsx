@@ -49,8 +49,8 @@ export function Home() {
   return (
     <PageTransition>
       <Seo
-        title="Agenzia di Marketing Digitale per PMI — SIVRA"
-        description="SIVRA costruisce sistemi di acquisizione clienti per imprenditori e PMI italiane. Strategia, funnel, automazione CRM. Analisi gratuita in 30 minuti."
+        title="SIVRA — Siti web, AI, automazioni e sistemi digitali"
+        description="SIVRA connette siti web, dati, integrazioni AI, automazioni e sistemi custom in un’unica infrastruttura digitale."
         path="/"
         jsonLd={[faqPage(homeFaqs)]}
       />
